@@ -1,0 +1,21 @@
+.spell-group {
+  break-before: auto;
+  break-after: auto;
+  break-inside: avoid;
+}
+
+.spell-item,
+.school-item {
+  break-before: auto;
+  break-after: auto;
+  break-inside: avoid;
+}
+
+@media print {
+  .spell-item {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: darkslategray dashed;
+  }
+}

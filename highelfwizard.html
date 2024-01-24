@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D&D Spells</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <link href="index.css" rel="stylesheet"">
+  <script src=" index.js">
+  </script>
+</head>
+
+<body class="bg-gray-100 p-8">
+  <div class="max-w-6xl mx-auto">
+    <h1
+      class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl light:text-black">
+      High Elf Wizard Spells</h1>
+    <div class="spell-group">
+      <h2
+        class="mb-4 text-2xl font-bold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl light:text-black">
+        Cantrips</h2>
+      <div class="spell-list level-0 grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"></div>
+    </div>
+    <div class="spell-group">
+      <h2
+        class="mb-4 text-2xl font-bold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl light:text-black">
+        Level 1 Spells</h2>
+      <div class="spell-list level-1 grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"></div>
+    </div>
+    <div class="spell-group">
+      <h2
+        class="mb-4 text-2xl font-bold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl light:text-black">
+        Level 2 Spells</h2>
+      <div class="spell-list level-2 grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+    </div>
+  </div>
+
+  <script>
+    // Path: index.html
+    "use strict";
+
+    const spells = [
+      {
+        "name": "Mage Hand",
+        "level": "Cantrip",
+        "school": "Conjuration",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": "V, S",
+        "duration": "1 minute",
+        "effect": "A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration or until you dismiss it as an action. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again."
+      },
+      {
+        "name": "Prestidigitation",
+        "level": "Cantrip",
+        "school": "Transmutation",
+        "castingTime": "1 action",
+        "range": "10 feet",
+        "components": "V, S",
+        "duration": "Up to 1 hour",
+        "effect": "This spell is a minor magical trick that novice spellcasters use for practice. You create one of the following effects within range: create an instantaneous, harmless sensory effect, light or snuff out a candle, clean or soil an object no larger than 1 cubic foot, chill, warm, or flavor up to 1 cubic foot of nonliving material for 1 hour, or make a small mark or symbol appear on an object or a surface for 1 hour."
+      },
+      {
+        "name": "Ray of Frost",
+        "level": "Cantrip",
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": "V, S",
+        "duration": "Instantaneous",
+        "effect": "A frigid beam of blue-white light streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 1d8 cold damage, and its speed is reduced by 10 feet until the start of your next turn."
+      },
+      {
+        "name": "Shocking Grasp",
+        "level": "Cantrip",
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": "V, S",
+        "duration": "Instantaneous",
+        "effect": "Lightning springs from your hand to deliver a shock to a creature you try to touch. Make a melee spell attack against the target. On a hit, the target takes 1d8 lightning damage, and it can't take reactions until the start of its next turn."
+      },
+      {
+        "name": "Comprehend Languages (Ritual)",
+        "level": "1st",
+        "school": "Divination",
+        "castingTime": "1 action",
+        "range": "Self",
+        "components": "V, S, M (a pinch of soot and salt)",
+        "duration": "1 hour",
+        "effect": "Understand the literal meaning of any spoken language you hear, and you can read any written language you see, but you must be touching the surface on which the words are written."
+      },
+      {
+        "name": "Detect Magic (Ritual)",
+        "level": "1st",
+        "school": "Divination",
+        "castingTime": "1 action",
+        "range": "Self (30-foot radius)",
+        "components": "V, S",
+        "duration": "Concentration, up to 10 minutes",
+        "effect": "Sense the presence of magic within 30 feet of you. If you sense magic, you can use your action to see a faint aura around any visible creature or object that bears magic."
+      },
+      {
+        "name": "Mage Armor",
+        "level": "1st",
+        "school": "Abjuration",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": "V, S, M (a piece of cured leather)",
+        "duration": "8 hours",
+        "effect": "Target's base AC becomes 13 + its Dexterity modifier. The spell ends if the target dons armor."
+      },
+      {
+        "name": "Magic Missile",
+        "level": "1st",
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "120 feet",
+        "components": "V, S",
+        "duration": "Instantaneous",
+        "effect": "Create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range and deals 1d4 + 1 force damage."
+      },
+      {
+        "name": "Protection from Evil and Good",
+        "level": "1st",
+        "school": "Abjuration",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": "V, S, M (holy water or powdered silver and iron)",
+        "duration": "Concentration, up to 10 minutes",
+        "effect": "Protect a creature against aberrations, celestials, elementals, fey, fiends, and undead. Target can't be charmed, frightened, or possessed by them."
+      },
+      {
+        "name": "Ray of Sickness",
+        "level": "1st",
+        "school": "Necromancy",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": "V, S",
+        "duration": "Instantaneous",
+        "effect": "A ray of sickening greenish energy. Make a ranged spell attack against the target. On a hit, the target takes 2d8 poison damage and must make a Constitution saving throw or be poisoned."
+      },
+      {
+        "name": "Shield",
+        "level": "1st",
+        "school": "Abjuration",
+        "castingTime": "1 reaction, which you take when you are hit by an attack or targeted by the magic missile spell",
+        "range": "Self",
+        "components": "V, S",
+        "duration": "1 round",
+        "effect": "An invisible barrier of magical force appears and protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack."
+      },
+      {
+        "name": "Sleep",
+        "level": "1st",
+        "school": "Enchantment",
+        "castingTime": "1 action",
+        "range": "90 feet",
+        "components": "V, S, M (a pinch of fine sand, rose petals, or a cricket)",
+        "duration": "1 minute",
+        "effect": "This spell sends creatures into a magical slumber. Roll 5d8; the total is how many hit points of creatures this spell can affect."
+      },
+      {
+        "name": "Thunderwave",
+        "level": "1st",
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "Self (15-foot cube)",
+        "components": "V, S",
+        "duration": "Instantaneous",
+        "effect": "A wave of thunderous force sweeps out from you. Each creature in a 15-foot cube originating from you must make a Constitution saving throw. On a failed save, a creature takes 2d8 thunder damage and is pushed 10 feet away."
+      },
+      {
+        "name": "Flaming Sphere",
+        "level": "2nd",
+        "school": "Conjuration",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": "V, S, M (a bit of tallow, a pinch of brimstone, and a dusting of powdered iron)",
+        "duration": "Concentration, up to 1 minute",
+        "effect": "Create a 5-foot-diameter sphere of fire in an unoccupied space. Any creature that ends its turn within 5 feet of the sphere must make a Dexterity saving throw, taking 2d6 fire damage on a failed save, or half as much damage on a successful one."
+      },
+      {
+        "name": "Hold Person",
+        "level": "2nd",
+        "school": "Enchantment",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": "V, S, M (a small, straight piece of iron)",
+        "duration": "Concentration, up to 1 minute",
+        "effect": "Choose a humanoid that you can see within range. The target must succeed on a Wisdom saving throw or be paralyzed for the duration."
+      },
+      {
+        "name": "Invisibility",
+        "level": "2nd",
+        "school": "Illusion",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": "V, S, M (an eyelash encased in gum arabic)",
+        "duration": "Concentration, up to 1 hour",
+        "effect": "A creature you touch becomes invisible until the spell ends. Anything the target is wearing or carrying is invisible as long as it is on the target's person."
+      },
+      {
+        "name": "Misty Step",
+        "level": "2nd",
+        "school": "Conjuration",
+        "castingTime": "1 bonus action",
+        "range": "Self",
+        "components": "V",
+        "duration": "Instantaneous",
+        "effect": "Briefly surrounded by silvery mist, you teleport up to 30 feet to an unoccupied space that you can see."
+      },
+      {
+        "name": "Shatter",
+        "level": "2nd",
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": "V, S, M (a chip of mica)",
+        "duration": "Instantaneous",
+        "effect": "A sudden loud ringing noise, painfully intense, erupts from a point of your choice within range. Each creature in a 10-foot-radius sphere centered on that point must make a Constitution saving throw. A creature takes 3d8 thunder damage on a failed save, or half as much damage on a successful one."
+      }
+    ];
+
+    const spellList = document.getElementsByClassName("spell-list");
+    for (const spellListIndex in Array.from(spellList)) {
+      const spellListElement = spellList[spellListIndex];
+      for (const spell of spells) {
+        if (spellListElement.classList.contains(`level-${spellLevelMap[spell.level]}`)) {
+          const newSpell = `
+            <!-- Spell: ${spell.name} -->
+            <div class="spell-item bg-white p-6 rounded-lg shadow-lg mb-6">
+              <h2 class="text-2xl font-bold mb-2"> ${spell.name} <i class="ml-2 fas ${spellSchoolToIconMap[spell.school]}"></i></h2>
+              <p><strong>Level:</strong> ${spell.level}</p>
+              <p><strong>School:</strong> ${spell.school}</p>
+              <p><strong>Casting Time:</strong> ${spell.castingTime}</p>
+              <p><strong>Range:</strong> ${spell.range}</p>
+              <p><strong>Components:</strong> ${spell.components}</p>
+              <p><strong>Duration:</strong> ${spell.duration}</p>
+              <p><strong>Effect:</strong> ${spell.effect}</p>
+            </div>
+          `;
+          spellListElement.innerHTML += newSpell;
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
