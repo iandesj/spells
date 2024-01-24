@@ -12,7 +12,8 @@
 }
 
 @media print {
-  .spell-item {
+  .spell-item,
+  .school-item {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
